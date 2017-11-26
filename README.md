@@ -4,7 +4,6 @@
 In this phase we will be implementing matlab's main operations in our own version of (MATHLAB) .Our code is written with C++ and it mainly works with only matrices.
 
 This version of mathlab supports the following operations:
-
 Copy-Add Column-Add Row-Addition-Subtraction-Multiplication-Division-Transpose-Determinant-Inverse-Cofactor.
 
 Now to use Mathlab you have two main ways:
@@ -14,6 +13,7 @@ Now to use Mathlab you have two main ways:
 2-uploading a text file with all the inputs and required operations with extension".m"
 
 Core Operations And it's Command Lines:
+
 C = A + B  // Add
 
 C = A - B  //Subtract

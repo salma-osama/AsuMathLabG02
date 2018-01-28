@@ -471,3 +471,71 @@ ostream& operator << (ostream &os,CMatrix& m){
 	os<<m.getString();
 	return os;
 }
+void CMatrix::rand_(int r,int c)
+{
+reset();
+this->nR=r;
+this->nC=c;
+if((nR*nC)==0){values=NULL; return;}
+	values = new double*[nR];
+	for(int iR=0;iR<nR;iR++)
+	{
+		values[iR] = new double[nC];
+		for(int iC=0;iC<nC;iC++)
+		{
+           values[iR][iC] = (rand()%100)/10.0;  
+		}
+    }
+
+}
+void CMatrix::eye(int r,int c)
+{
+reset();
+this->nR=r;
+this->nC=c;
+if((nR*nC)==0){values=NULL; return;}
+	values = new double*[nR];
+	for(int iR=0;iR<nR;iR++)
+	{
+		values[iR] = new double[nC];
+		for(int iC=0;iC<nC;iC++)
+		{
+           values[iR][iC] = (iR==iC)?1:0;  
+		}
+    }
+
+}
+void CMatrix::zeros(int r,int c)
+{
+reset();
+this->nR=r;
+this->nC=c;
+if((nR*nC)==0){values=NULL; return;}
+	values = new double*[nR];
+	for(int iR=0;iR<nR;iR++)
+	{
+		values[iR] = new double[nC];
+		for(int iC=0;iC<nC;iC++)
+		{
+           values[iR][iC]=0;  
+		}
+    }
+
+}
+void CMatrix::ones(int r,int c)
+{
+reset();
+this->nR=r;
+this->nC=c;
+if((nR*nC)==0){values=NULL; return;}
+	values = new double*[nR];
+	for(int iR=0;iR<nR;iR++)
+	{
+		values[iR] = new double[nC];
+		for(int iC=0;iC<nC;iC++)
+		{
+           values[iR][iC]=1;
+		}
+    }
+
+}

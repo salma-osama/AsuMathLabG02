@@ -70,4 +70,8 @@ public:
 	double getDeterminant();
 	double getTranspose();
 	double getInverse();
+	void rand_(int r,int c);
+        void eye(int r,int c);
+        void zeros(int r,int c);
+        void ones(int r,int c);
 };

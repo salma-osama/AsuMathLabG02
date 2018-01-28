@@ -59,6 +59,42 @@ int main(int argc, char* argv[])
 					mat = s.substr(s.find_last_of('=')+1, s.length()-s.find_last_of('=')-1);
 					if(mat.find("[")!=-1 && mat.find("]")!=-1)
 						m.copy(mat);
+					else if(mat.find("rand")!=-1)
+					{
+                     mat=trim(mat);
+                     string nr=mat.substr(5,mat.length()-mat.find(",")-2);
+                     string nc=mat.substr(mat.find(",")+1,mat.length()-mat.find(",")-2);
+                     int r=atoi(nr.c_str());
+                     int c=atoi(nc.c_str());
+                     m.rand_(r,c);
+					}
+					else if(mat.find("eye")!=-1)
+					{
+                     mat=trim(mat);
+                     string nr=mat.substr(4,mat.length()-mat.find(",")-2);
+                     string nc=mat.substr(mat.find(",")+1,mat.length()-mat.find(",")-2);
+                     int r=atoi(nr.c_str());
+                     int c=atoi(nc.c_str());
+                     m.eye(r,c);
+					}
+					else if(mat.find("zeros")!=-1)
+					{
+                     mat=trim(mat);
+                     string nr=mat.substr(6,mat.length()-mat.find(",")-2);
+                     string nc=mat.substr(mat.find(",")+1,mat.length()-mat.find(",")-2);
+                     int r=atoi(nr.c_str());
+                     int c=atoi(nc.c_str());
+                     m.zeros(r,c);
+					}
+					else if(mat.find("ones")!=-1)
+					{
+                     mat=trim(mat);
+                     string nr=mat.substr(5,mat.length()-mat.find(",")-2);
+                     string nc=mat.substr(mat.find(",")+1,mat.length()-mat.find(",")-2);
+                     int r=atoi(nr.c_str());
+                     int c=atoi(nc.c_str());
+                     m.ones(r,c);
+					}
 					else if(mat.find("./")!=-1)
 					{
 						mat = trim(mat);
@@ -284,6 +320,42 @@ int main(int argc, char* argv[])
 				mat = s.substr(s.find_last_of('=')+1, s.length()-s.find_last_of('=')-1);
 				if(mat.find("[")!=-1 && mat.find("]")!=-1)
 					m.copy(mat);
+				else if(mat.find("rand")!=-1)
+					{
+                     mat=trim(mat);
+                     string nr=mat.substr(5,mat.length()-mat.find(",")-2);
+                     string nc=mat.substr(mat.find(",")+1,mat.length()-mat.find(",")-2);
+                     int r=atoi(nr.c_str());
+                     int c=atoi(nc.c_str());
+                     m.rand_(r,c);
+					}
+				else if(mat.find("eye")!=-1)
+					{
+                     mat=trim(mat);
+                     string nr=mat.substr(4,mat.length()-mat.find(",")-2);
+                     string nc=mat.substr(mat.find(",")+1,mat.length()-mat.find(",")-2);
+                     int r=atoi(nr.c_str());
+                     int c=atoi(nc.c_str());
+                     m.eye(r,c);
+					}
+				else if(mat.find("zeros")!=-1)
+					{
+                     mat=trim(mat);
+                     string nr=mat.substr(6,mat.length()-mat.find(",")-2);
+                     string nc=mat.substr(mat.find(",")+1,mat.length()-mat.find(",")-2);
+                     int r=atoi(nr.c_str());
+                     int c=atoi(nc.c_str());
+                     m.zeros(r,c);
+					}
+				else if(mat.find("ones")!=-1)
+					{
+                     mat=trim(mat);
+                     string nr=mat.substr(5,mat.length()-mat.find(",")-2);
+                     string nc=mat.substr(mat.find(",")+1,mat.length()-mat.find(",")-2);
+                     int r=atoi(nr.c_str());
+                     int c=atoi(nc.c_str());
+                     m.ones(r,c);
+					}
 				else if(mat.find("./")!=-1)
 				{
 					mat = trim(mat);

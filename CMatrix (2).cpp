@@ -539,3 +539,47 @@ if((nR*nC)==0){values=NULL; return;}
     }
 
 }
+CMatrix CMatrix::root()
+{
+	CMatrix r;
+	for(int i=0; i<nR; i++)
+		for(int j=0; j<nC; j++)
+			r.values[i][j] = sqrt(values[i][j]);
+	return r;
+}
+double CMatrix::powert(double base, int exp)
+{
+	double result = 1;
+	for (int i = 1; i <= exp; i++)
+	{
+		result *= base;
+	}
+	return result;
+}
+CMatrix CMatrix::dotpower(double d)
+{
+	CMatrix r;
+	for(int i=0; i<nR; i++)
+		for(int j=0; j<nC; j++)
+			r.values[i][j] = pow(values[i][j],d);
+	return r;
+}
+CMatrix CMatrix::power(int n)
+{
+	CMatrix r = *this;
+	CMatrix t;
+	for(int i=0; i<n; i++)
+	{
+		if(i==0)t = r;
+		else t*=r;
+	}
+	return t;
+}
+CMatrix CMatrix::dotPower(CMatrix& R)
+{
+	CMatrix r;
+	for(int i=0; i<nR; i++)
+		for(int j=0; j<nC; j++)
+			r.values[i][j] = pow(values[i][j],R.values[i][j]);
+	return r;
+}

@@ -26,11 +26,18 @@ C = A'     //Inverse
 
 # phase 2  
 requirements:
+
 ● Support mathematical functions.
+
  (Trigonometric, Logarithmic, Roots, Power)
 ● Support mathematical expressions.
+
  (Either with (dot) or not.)
+ 
 ● Support flexible matrix parser.
+
  (Accept matrix in matrix, expressions and variables)
+ 
 ● Support error handling.
+
  (Do not crash for invalid input)

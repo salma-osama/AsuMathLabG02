@@ -603,7 +603,6 @@ void CMatrix :: ln()
 		for(int iC=0;iC<nC;iC++)
 			values[iR][iC]=log(values[iR][iC]);
 }
-
 int CMatrix :: factorial(int number)
 {
 	double result = 1 ; 
@@ -612,18 +611,13 @@ int CMatrix :: factorial(int number)
 		result *= i;
 	}
 	return result;
-
 double CMatrix :: sin_equation(double x) // using taylor expansion sinx=x-x^3/3*2*1+x^5/5*4*3*2*1
 { 
-	
 	double y=(x/180)*PI;
 	bool sign = true; // true for +  and flase for - 
 	double sum = 0;
-           
-
 	for (int i = 1 ; i <= 10 ; i += 2)
 	{
-		
 			if (sign ==true)
 		{
 		    sum += powert(y, i) / factorial(i);
@@ -632,8 +626,6 @@ double CMatrix :: sin_equation(double x) // using taylor expansion sinx=x-x^3/3*
 		{
 			sum -= powert(y, i) / factorial(i);
 		} 
-		 
-
 			if (sign == true)
 		{
 			sign = false;
@@ -653,22 +645,15 @@ double CMatrix :: sin_equation(double x) // using taylor expansion sinx=x-x^3/3*
 			   sum = -1;
 		   else if ( x==360)
 			   sum = 0;
-
 	    return sum ;
 }
-
 double CMatrix ::  cos_equation(double x) // using taylor expansion cosx=1-x^2/2*1+x^4/4*3*2*1
-{ 
-
+{
 	double y=(x/180)*PI;
 	bool sign = true; // true for +  and flase for - 
 	double sum = 0;
-	  
-
-
 	for (int i = 0; i <= 10 ;i += 2)
 	{
-		
 			if (sign ==true)
 		{
 			sum += (double)powert(y, i) / (double)factorial(i);
@@ -677,8 +662,6 @@ double CMatrix ::  cos_equation(double x) // using taylor expansion cosx=1-x^2/2
 		{
 		    sum -= (double)powert(y, i) / (double)factorial(i);
 		} 
-		 
-
 			if (sign == true)
 		{
 			sign = false;
@@ -688,7 +671,6 @@ double CMatrix ::  cos_equation(double x) // using taylor expansion cosx=1-x^2/2
 			sign = true;
 		}
 	}
-
 	            if(x==0)
 			   sum = 1;
 		   else if ( x==90)
@@ -699,11 +681,8 @@ double CMatrix ::  cos_equation(double x) // using taylor expansion cosx=1-x^2/2
 			   sum = 0;
 		   else if ( x==360)
 			   sum = 1;
-
 	    return sum ;
 }
-
-
 double CMatrix :: tan_equation(double x)
 {
 	double sum ;
@@ -718,10 +697,7 @@ double CMatrix :: tan_equation(double x)
 		   else if ( x==405)
 			   sum = 1;
 		   else
-		   {
-			   sum = sin_equation(x)/cos_equation(x);
-		   }
-		   
-	
+		   {	   sum = sin_equation(x)/cos_equation(x);
+                   }
 return sum;
 }

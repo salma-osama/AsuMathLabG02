@@ -604,3 +604,124 @@ void CMatrix :: ln()
 			values[iR][iC]=log(values[iR][iC]);
 }
 
+int CMatrix :: factorial(int number)
+{
+	double result = 1 ; 
+	for (int i = 1; i <= number; i++)
+	{
+		result *= i;
+	}
+	return result;
+
+double CMatrix :: sin_equation(double x) // using taylor expansion sinx=x-x^3/3*2*1+x^5/5*4*3*2*1
+{ 
+	
+	double y=(x/180)*PI;
+	bool sign = true; // true for +  and flase for - 
+	double sum = 0;
+           
+
+	for (int i = 1 ; i <= 10 ; i += 2)
+	{
+		
+			if (sign ==true)
+		{
+		    sum += powert(y, i) / factorial(i);
+		}
+		else
+		{
+			sum -= powert(y, i) / factorial(i);
+		} 
+		 
+
+			if (sign == true)
+		{
+			sign = false;
+		}
+		else
+		{
+			sign = true;
+		}
+	}
+	            if(x==0)
+			   sum = 0;
+		   else if ( x==90)
+			   sum = 1;
+		   else if ( x==180)
+			   sum = 0;
+		   else if ( x==270)
+			   sum = -1;
+		   else if ( x==360)
+			   sum = 0;
+
+	    return sum ;
+}
+
+double CMatrix ::  cos_equation(double x) // using taylor expansion cosx=1-x^2/2*1+x^4/4*3*2*1
+{ 
+
+	double y=(x/180)*PI;
+	bool sign = true; // true for +  and flase for - 
+	double sum = 0;
+	  
+
+
+	for (int i = 0; i <= 10 ;i += 2)
+	{
+		
+			if (sign ==true)
+		{
+			sum += (double)power(y, i) / (double)factorial(i);
+		}
+		else
+		{
+		    sum -= (double)power(y, i) / (double)factorial(i);
+		} 
+		 
+
+			if (sign == true)
+		{
+			sign = false;
+		}
+		else
+		{
+			sign = true;
+		}
+	}
+
+	            if(x==0)
+			   sum = 1;
+		   else if ( x==90)
+			   sum = 0;
+		   else if ( x==180)
+			   sum = -1;
+		   else if ( x==270)
+			   sum = 0;
+		   else if ( x==360)
+			   sum = 1;
+
+	    return sum ;
+}
+
+
+double CMatrix :: tan_equation(double x)
+{
+	double sum ;
+	            if(x==45)
+			   sum = 1;
+		   else if ( x==135)
+			   sum = -1;
+		   else if ( x==225)
+			   sum = 1;
+		   else if ( x==315)
+			   sum = -1;
+		   else if ( x==405)
+			   sum = 1;
+		   else
+		   {
+			   sum = sin_equation(x)/cos_equation(x);
+		   }
+		   
+	
+return sum;
+}

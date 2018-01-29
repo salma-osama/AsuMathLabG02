@@ -21,6 +21,7 @@ public:
 	void copy(double d);
 	void copy(string s);
 	void reset();
+
 	string getString();
 	CMatrix operator=(const CMatrix& m);
 	CMatrix operator=(double d);
@@ -79,4 +80,7 @@ public:
 	CMatrix power(int n);
 	double powert(double base, int exp);
 	CMatrix root();
+	void log_10() ;
+	void log2() ;
+	void ln() ;
 };

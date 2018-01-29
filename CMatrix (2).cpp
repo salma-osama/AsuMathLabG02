@@ -534,7 +534,8 @@ if((nR*nC)==0){values=NULL; return;}
 		values[iR] = new double[nC];
 		for(int iC=0;iC<nC;iC++)
 		{
-           values[iR][iC]=1;
+
+			values[iR][iC]=1;
 		}
     }
 
@@ -583,3 +584,23 @@ CMatrix CMatrix::dotPower(CMatrix& R)
 			r.values[i][j] = pow(values[i][j],R.values[i][j]);
 	return r;
 }
+
+void CMatrix :: log_10()
+{
+	for(int iR=0;iR<nR;iR++)
+		for(int iC=0;iC<nC;iC++)
+			values[iR][iC]=log10(values[iR][iC]);
+}
+void CMatrix :: log2()
+{
+	for(int iR=0;iR<nR;iR++)
+		for(int iC=0;iC<nC;iC++)
+			values[iR][iC]=(log(values[iR][iC])/log(2));
+}
+void CMatrix :: ln()
+{
+	for(int iR=0;iR<nR;iR++)
+		for(int iC=0;iC<nC;iC++)
+			values[iR][iC]=log(values[iR][iC]);
+}
+

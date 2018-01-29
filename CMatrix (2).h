@@ -83,4 +83,10 @@ public:
 	void log_10() ;
 	void log2() ;
 	void ln() ;
+        int factorial(int number);
+        double sin_equation(double x);
+        double cos_equation(double x);
+        double tan_equation(double x);
+
+
 };

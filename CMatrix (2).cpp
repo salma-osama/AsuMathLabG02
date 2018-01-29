@@ -177,6 +177,7 @@ CMatrix CMatrix::operator=(string s)
 }
 void CMatrix::add(CMatrix& m)
 {
+	if(nR != m.nR || nC != m.nC)throw("Invalid matrix dimensions");
 	for(int iR=0;iR<nR;iR++)
 		for(int iC=0;iC<nC;iC++)
 			values[iR][iC] += m.values[iR][iC];
@@ -204,6 +205,7 @@ CMatrix CMatrix::operator+(double d)
 }
 void CMatrix::sub(CMatrix& m)
 {
+	if(nR != m.nR || nC != m.nC)throw("Invalid matrix dimensions");
 	for(int iR=0;iR<nR;iR++)
 		for(int iC=0;iC<nC;iC++)
 			values[iR][iC] -= m.values[iR][iC];
@@ -238,6 +240,7 @@ void CMatrix::dotDiv(double d)
 void CMatrix::mul(CMatrix& m)
 {
 	CMatrix r(nR, m.nC);
+	 if(nC != m.nR)throw("Invalid matrix dimension");
 	for(int iR=0;iR<r.nR;iR++)
 		for(int iC=0;iC<r.nC;iC++)
 		{
@@ -309,14 +312,14 @@ CMatrix CMatrix::operator+()
 void CMatrix::setSubMatrix(int r, int c,CMatrix& m)
 {
 	if((r+m.nR)>nR || (c+m.nC)>nC)
-		{cout<<"Invalid matrix dimension"<<endl;return;}
+		{throw("Invalid matrix dimension");return;}
 	for(int iR=0;iR<m.nR;iR++)
 		for(int iC=0;iC<m.nC;iC++)
 			values[r+iR][c+iC] = m.values[iR][iC];
 }
 CMatrix CMatrix::getSubMatrix(int r, int c, int nr, int nc)
 {
-	if((r+nr)>nR || (c+nc)>nC){cout<<"Invalid matrix dimension"<<endl;exit;}
+	if((r+nr)>nR || (c+nc)>nC){throw("Invalid matrix dimension");exit;}
 	CMatrix m(nr, nc);
 	for(int iR=0;iR<m.nR;iR++)
 		for(int iC=0;iC<m.nC;iC++)
@@ -352,6 +355,7 @@ CMatrix CMatrix::getCofactor(int r, int c)
 		}
 		return m;
 }
+
 double CMatrix::getDeterminant()
 {
 	//if(nR!=nC){cout<<"Invalid matrix dimension"<<endl;exit;}
@@ -543,6 +547,7 @@ if((nR*nC)==0){values=NULL; return;}
 CMatrix CMatrix::root()
 {
 	CMatrix r;
+	//if(nC==0 && nR ==0)throw("Invalid matrix dimensions");
 	for(int i=0; i<nR; i++)
 		for(int j=0; j<nC; j++)
 			r.values[i][j] = sqrt(values[i][j]);

@@ -671,11 +671,11 @@ double CMatrix ::  cos_equation(double x) // using taylor expansion cosx=1-x^2/2
 		
 			if (sign ==true)
 		{
-			sum += (double)power(y, i) / (double)factorial(i);
+			sum += (double)powert(y, i) / (double)factorial(i);
 		}
 		else
 		{
-		    sum -= (double)power(y, i) / (double)factorial(i);
+		    sum -= (double)powert(y, i) / (double)factorial(i);
 		} 
 		 
 

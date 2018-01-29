@@ -74,4 +74,9 @@ public:
         void eye(int r,int c);
         void zeros(int r,int c);
         void ones(int r,int c);
+	CMatrix dotPower(CMatrix& R);
+	CMatrix dotpower(double d);
+	CMatrix power(int n);
+	double powert(double base, int exp);
+	CMatrix root();
 };

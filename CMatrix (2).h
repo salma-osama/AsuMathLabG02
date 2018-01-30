@@ -88,5 +88,12 @@ public:
         double cos_equation(double x);
         double tan_equation(double x);
         string stringof();
+	CMatrix dotdiv(double d);
+	CMatrix dotdivision(double d);
+	CMatrix dotplus(double d);
+	CMatrix dotminus(double d);
+	CMatrix dottimes(double d);
+	CMatrix dotTimes(CMatrix& R);
+  	CMatrix dotDivision(CMatrix& R);
 
 };

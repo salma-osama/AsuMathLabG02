@@ -546,8 +546,7 @@ if((nR*nC)==0){values=NULL; return;}
 }
 CMatrix CMatrix::root()
 {
-	CMatrix r;
-	//if(nC==0 && nR ==0)throw("Invalid matrix dimensions");
+	CMatrix r(nR,nC);
 	for(int i=0; i<nR; i++)
 		for(int j=0; j<nC; j++)
 			r.values[i][j] = sqrt(values[i][j]);
@@ -564,7 +563,7 @@ double CMatrix::powert(double base, int exp)
 }
 CMatrix CMatrix::dotpower(double d)
 {
-	CMatrix r;
+	CMatrix r(nR,nC);
 	for(int i=0; i<nR; i++)
 		for(int j=0; j<nC; j++)
 			r.values[i][j] = pow(values[i][j],d);
@@ -583,7 +582,7 @@ CMatrix CMatrix::power(int n)
 }
 CMatrix CMatrix::dotPower(CMatrix& R)
 {
-	CMatrix r;
+	CMatrix r(nR,nC);
 	for(int i=0; i<nR; i++)
 		for(int j=0; j<nC; j++)
 			r.values[i][j] = pow(values[i][j],R.values[i][j]);

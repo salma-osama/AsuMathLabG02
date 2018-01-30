@@ -592,7 +592,8 @@ int main(int argc, char* argv[])
 	string var;
 	string mat;
 	string v;
-	CMatrix m;
+
+        CMatrix m;
 	int index = 0;
         int n=0;
 	string s;
@@ -616,6 +617,42 @@ int main(int argc, char* argv[])
 					mat = s.substr(s.find_last_of('=')+1, s.length()-s.find_last_of('=')-1);
 					if(mat.find("[")!=-1 && mat.find("]")!=-1)
 						m.copy(mat);//m=fix_matrix(mat,n);
+					else if(mat.find("rand(")!=-1)
+					{
+						 mat=trim(mat);
+						 if(mat.find(";")!=-1)mat = mat.substr(0,mat.length()-1);
+						 int nr=atoi(mat.substr(5,mat.find(",")-5).c_str());
+						 int nc=atoi(mat.substr(mat.find(",")+1,mat.find(")")-mat.find(",")-1).c_str());
+						 CMatrix m1(nr,nc,CMatrix::MI_RAND,0);
+						 m=m1;
+					}
+					else if(mat.find("eye(")!=-1)
+					{
+					         mat=trim(mat);
+						 if(mat.find(";")!=-1)mat = mat.substr(0,mat.length()-1);
+						 int nr=atoi(mat.substr(4,mat.find(",")-4).c_str());
+						 int nc=atoi(mat.substr(mat.find(",")+1,mat.find(")")-mat.find(",")-1).c_str());
+						 CMatrix m1(nr,nc,CMatrix::MI_EYE,0);
+						 m=m1;
+					}
+					else if(mat.find("zeros(")!=-1)
+					{
+                                                 mat=trim(mat);
+						 if(mat.find(";")!=-1)mat = mat.substr(0,mat.length()-1);
+						 int nr=atoi(mat.substr(6,mat.find(",")-6).c_str());
+						 int nc=atoi(mat.substr(mat.find(",")+1,mat.find(")")-mat.find(",")-1).c_str());
+						 CMatrix m1(nr,nc,CMatrix::MI_ZEROS,0);
+						 m=m1;
+					}
+					else if(mat.find("ones(")!=-1)
+					{
+						 mat=trim(mat);
+						 if(mat.find(";")!=-1)mat = mat.substr(0,mat.length()-1);
+						 int nr=atoi(mat.substr(5,mat.find(",")-5).c_str());
+						 int nc=atoi(mat.substr(mat.find(",")+1,mat.find(")")-mat.find(",")-1).c_str());
+						 CMatrix m1(nr,nc,CMatrix::MI_ONES,0);
+						 m=m1;
+					}
 					else if(mat.find("(")!=-1||mat.find(")")!=-1||mat.find("+")!=-1||mat.find("-")!=-1||mat.find("*")!=-1||mat.find("/")!=-1||mat.find("^")!=-1)
 					{
 						mat = trim(mat);

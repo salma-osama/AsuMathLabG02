@@ -594,6 +594,7 @@ int main(int argc, char* argv[])
 	string v;
 	CMatrix m;
 	int index = 0;
+        int n=0;
 	string s;
 	if(argc>1)
 	{
@@ -614,7 +615,7 @@ int main(int argc, char* argv[])
 					var = trim(s.substr(0,s.find_last_of('=')+1));
 					mat = s.substr(s.find_last_of('=')+1, s.length()-s.find_last_of('=')-1);
 					if(mat.find("[")!=-1 && mat.find("]")!=-1)
-						m.copy(mat);
+						m.copy(mat);//m=fix_matrix(mat,n);
 					else if(mat.find("(")!=-1||mat.find(")")!=-1||mat.find("+")!=-1||mat.find("-")!=-1||mat.find("*")!=-1||mat.find("/")!=-1||mat.find("^")!=-1)
 					{
 						mat = trim(mat);
@@ -756,7 +757,7 @@ int main(int argc, char* argv[])
 					var = trim(s.substr(0,s.find_last_of('=')+1));
 					mat = s.substr(s.find_last_of('=')+1, s.length()-s.find_last_of('=')-1);
 					if(mat.find("[")!=-1 && mat.find("]")!=-1)
-						m.copy(mat);
+						m.copy(mat); //m=fix_matrix(mat,n);
 					
 					else if(mat.find("(")!=-1||mat.find(")")!=-1||mat.find("+")!=-1||mat.find("-")!=-1||mat.find("*")!=-1||mat.find("/")!=-1||mat.find("^")!=-1)
 					{

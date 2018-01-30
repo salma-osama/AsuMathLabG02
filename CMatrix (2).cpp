@@ -706,3 +706,18 @@ double CMatrix :: tan_equation(double x)
                    }
 return sum;
 }
+string CMatrix::stringof()
+{
+	string s = "[";
+	for(int i=0; i<nR; i++)
+	{
+		for(int j=0; j<nC; j++)
+		{
+			s+=to_string(values[i][j]);
+			if(j!=nC-1)s+=" ";
+		}
+		if(i!=nR-1)s+=";";
+	}
+	s+="]";
+	return s;
+}

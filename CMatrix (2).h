@@ -87,6 +87,6 @@ public:
         double sin_equation(double x);
         double cos_equation(double x);
         double tan_equation(double x);
-
+        string stringof();
 
 };

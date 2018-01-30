@@ -720,3 +720,59 @@ string CMatrix::stringof()
 	s+="]";
 	return s;
 }
+CMatrix CMatrix::dotdiv(double d)
+{
+	CMatrix r(nR,nC);
+	for(int i=0; i<nR; i++)
+		for(int j=0; j<nC; j++)
+			r.values[i][j] = d/values[i][j];
+	return r;
+}
+CMatrix CMatrix::dotdivision(double d)
+{
+	CMatrix r(nR,nC);
+	for(int i=0; i<nR; i++)
+		for(int j=0; j<nC; j++)
+			r.values[i][j] = values[i][j]/d;
+	return r;
+}
+	CMatrix CMatrix::dotplus(double d)
+{
+	CMatrix r(nR,nC);
+	for(int i=0; i<nR; i++)
+		for(int j=0; j<nC; j++)
+			r.values[i][j] = values[i][j]+d;
+	return r;
+}
+CMatrix CMatrix::dotminus(double d)
+{
+	CMatrix r(nR,nC);
+	for(int i=0; i<nR; i++)
+		for(int j=0; j<nC; j++)
+			r.values[i][j] = values[i][j]-d;
+	return r;
+}
+CMatrix CMatrix::dottimes(double d)
+{
+	CMatrix r(nR,nC);
+	for(int i=0; i<nR; i++)
+		for(int j=0; j<nC; j++)
+			r.values[i][j] = values[i][j]*d;
+	return r;
+}
+	CMatrix CMatrix::dotTimes(CMatrix& R)
+{
+	CMatrix r(nR,nC);
+	for(int i=0; i<nR; i++)
+		for(int j=0; j<nC; j++)
+			r.values[i][j] = values[i][j]*R.values[i][j];
+	return r;
+}
+CMatrix CMatrix::dotDivision(CMatrix& R)
+{
+	CMatrix r(nR,nC);
+	for(int i=0; i<nR; i++)
+		for(int j=0; j<nC; j++)
+			r.values[i][j] = values[i][j]/R.values[i][j];
+	return r;
+}

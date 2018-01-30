@@ -448,8 +448,88 @@ string solve(string*operators, string*operands, int ioperators, int ioperands)
 	string re = operands[0];
 	return re;
 }
+
+void handlingErrors(string file)
+{   
+
+	string s;
+	ifstream infile("errorsexample1.m");
+	cout<<"no"<<endl;
+	if(!infile.bad())
+	{
+		while(getline(infile,s))
+		{
+			
+			string r= trim(s);
+			int length= r.length();
+			
+			for(int i=0; i<length ;i++)
+			{
+				int a=r.find("/");
+				if(a!=-1)
+				{  
+					if(r.find("0")!=-1) throw("This gives an undefined value"); 
+				}	
+		//============================================================================================
+				int b=r.find("[");
+			
+				if(b!=-1)
+				{ 
+					int newlength=length-b;
+				
+				for(int i=b; i<newlength ;i++)
+				{ 
+				
+				if(r.find("]")==-1)  throw("wrong enteries ");
+				if(r.find("]")>newlength+1) throw("wrong enteries ");
+				}
+				}
+		//=============================================================================================
+				int c=r.find("(");
+				
+				if(c!=-1)
+				{
+					int newlength1=length-c;
+				for(int i=c; i<newlength1 ;i++)
+				{
+				if(r.find(")")==-1)  throw("wrong enteries ");
+				if(r.find(")")>newlength1+1) throw("wrong enteries ");
+				}
+				}
+        //===============================================================================================
+				int d=r.rfind("+");
+				int e=r.rfind("-");
+				int f= r.rfind("*");
+				int g =r.rfind("/");
+				if(d==r.length()-1 || e==r.length()-1 || f==r.length()-1 || g==r.length()-1 ) throw("wrong enteries ");
+         //===========================================================================================
+
+				int x=r.find(";");
+				int count=0,count1=0;
+				for(int i=0; i<x ;i++)
+				{
+				if(isdigit(r[i])) count++;
+				
+				}
+				cout<<count<<endl;
+				for(int j=x+1 ; j<length ;j++)
+				{
+				if(isdigit(r[j])) count1++;
+				}
+				cout<<count1<<endl;
+				if(count != count1)throw("wrong enteries 3");
+			
+				} //de bta3t elfor
+			} //de bta3t elwhile
+			infile.close();
+		}
+	if(infile.bad()) 
+		{cout<<"file not read"<<endl;}
+	
+}
 int main(int argc, char* argv[])
-{
+{ 
+	try{
 	string variables[num];
 	CMatrix matrices[num];
 	string var;
@@ -462,6 +542,10 @@ int main(int argc, char* argv[])
 	{
 		string file = argv[1];
 		ifstream infile(argv[1]);
+		if(file =="errorsexample.m")
+		{
+		handlingErrors(file);	
+		}
 		if(!infile.bad())
 		{
 			while(getline(infile, s))	
@@ -744,4 +828,10 @@ int main(int argc, char* argv[])
 	}
 	delete[] variables;
 	delete[] matrices;
+	}
+	catch(char* error)
+	{
+	cout<<"Error: "<<error<<endl;
+	
+	}
 }

@@ -31,6 +31,63 @@ bool isDouble(string s)
 	}
 	return true;
 }
+CMatrix fix_matrix(string s,int& counter)
+{
+	CMatrix result;
+	 int n=0;
+     s.erase(s.begin());
+	 s.erase(s.length()-1);
+	 
+	 int pos=0;
+	 string matrices[50];
+	   counter=0;
+	 int flag=0;
+	 for(int i=pos;i<=s.length();i++)
+	 {
+		 string a;
+	 if(s[i]=='[') 
+		 counter++;
+	 else if(s[i]==']') 
+		 counter--;
+	 else if((s[i]==';' || s[i]=='\0')&& counter==0 )
+	 {
+		 a=s.substr(pos,i-pos);
+		 pos=i+1;
+	 if((a.find('[')!=-1) || (a.find(']')!=-1))
+		 flag=1;
+	 }
+	
+	 if(flag==1)
+	{
+		CMatrix sub_result;
+		int pos2=0;
+		flag=0;
+		for(int j=0;j<=a.length();j++)
+		{
+		if((a[j]==',') || (a[j]=='\0'))
+		{
+		matrices[n]=a.substr(pos2,j-pos2);
+        CMatrix k;
+		k.copy(matrices[n]);
+		sub_result.addColumn(k);
+		pos2=j+1;
+		n++;
+		}
+		}
+       
+		result.addRow(sub_result);
+	 }
+	 else if(flag==0)
+	 {
+		 CMatrix b;
+		 b.copy(a);
+		 result.addRow(b);
+	 }
+}
+
+	
+return result;
+} 
 void modify(string* operators, string* operands, int ioperator, int ioperand, int ioperators, int ioperands)
 {
 	for(int i = ioperator; i<ioperators-1; i++)
